@@ -31,6 +31,7 @@ public class Employee implements Serializable {
 
     private LocalDateTime updateTime;
 
+    //在实体类的属性上加入@TableField注解，指定自动填充的策略
     @TableField(fill = FieldFill.INSERT)
     private Long createUser;
 
