@@ -27,8 +27,10 @@ public class Employee implements Serializable {
 
     private Integer status;
 
+    @TableField(fill = FieldFill.INSERT)//插入时自动填充
     private LocalDateTime createTime;
 
+    @TableField(fill = FieldFill.UPDATE)//插入和更新时填充字段
     private LocalDateTime updateTime;
 
     //在实体类的属性上加入@TableField注解，指定自动填充的策略
