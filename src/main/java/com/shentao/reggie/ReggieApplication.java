@@ -3,9 +3,13 @@ package com.shentao.reggie;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
 @SpringBootApplication
+//@ServletComponentScan
+@EnableTransactionManagement
 public class ReggieApplication {
     public static void main(String[] args) {
         //这个就是springboot的启动命令，运行main，执行这一句， SpringApplication是一个定义好的类。
