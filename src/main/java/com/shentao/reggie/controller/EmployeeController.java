@@ -55,6 +55,8 @@ public class EmployeeController {
         request.getSession().setAttribute("employee",employee.getId());
         return R.success(emp);
     }
+
+
         //退出
         @PostMapping("/logout")
         public R<String> logout(HttpServletRequest request){
@@ -115,6 +117,9 @@ public class EmployeeController {
          */
     @PutMapping
     public R<String> update(HttpServletRequest request,@RequestBody Employee employee){
+
+        long id = Thread.currentThread().getId();
+        log.info("线程id为{}",id);
 
 
      /*   Long empId = (Long) request.getSession().getAttribute("employee");

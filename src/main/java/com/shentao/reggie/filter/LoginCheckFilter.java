@@ -3,7 +3,9 @@ package com.shentao.reggie.filter;
 //检查用户是否已经完成登录
 
 import com.alibaba.fastjson.JSON;
+import com.shentao.reggie.common.BaseContext;
 import com.shentao.reggie.common.R;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 
@@ -30,10 +32,10 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-
-
         //1.获取本次请求的URL
-        String requestURL = request.getRequestURI();
+        String requestURL = request.getRequestURI();// /backend/index.html
+
+        log.info("拦截到请求：{}",requestURL);
 
         //定义不需要处理的请求路径
         String[] urls = new String[]{
@@ -55,6 +57,12 @@ public class LoginCheckFilter implements Filter {
 
         //4.判断登陆状态 如果已经登录就直接放行
         if(request.getSession().getAttribute("employee")!=null){
+            log.info("用户已登录，用户id为{}",request.getSession().getAttribute("employee"));
+
+            Long empId = (Long) request.getSession().getAttribute("employee");
+            BaseContext.setCurrentId(empId);
+
+
             filterChain.doFilter(request,response);
             return;
         }
