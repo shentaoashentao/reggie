@@ -22,6 +22,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
     @Autowired
     private SetmealService setmealService;
+
+
     //根据id删除分类，删除之前要先判断 分类是否关联了菜品
     @Override
     public void remove(Long id) {

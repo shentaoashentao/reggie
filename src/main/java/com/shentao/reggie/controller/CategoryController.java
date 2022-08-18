@@ -49,7 +49,7 @@ public class CategoryController {
         return R.success(pageInfo);
     }
 
-    //删除
+    //根据id删除
     @DeleteMapping
     public R<String> delete(Long id){
         log.info("删除分类，id为：{}",id);
@@ -57,5 +57,15 @@ public class CategoryController {
         categoryService.removeById(id);
         return R.success("分类信息删除成功");
     }
+
+    //根据id修改分类信息
+    @PutMapping
+    public R<String> update(@RequestBody Category category){
+        log.info("修改分类信息：{}",category);
+
+        categoryService.updateById(category);
+        return R.success("修改分类信息成功");
+    }
+
 }
 
